@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Cálculo de Índice de Massa Corporal</title>
+        <meta name="viewport" content="width=device-width">
+    </head>
+
+    <body>
+
+        <h1> Calcular Índice de Massa Corporal</h1>
+        <br>
+            
+            <h3> Digite sua altura </h3>
+            <input type="number" id="altura"/>
+
+            <br><br>
+
+            <h3> Digite seu peso </h3>
+            <input type="number" id="peso">
+            <br><br>
+            <input type="button" id="calcular" value="Calcular" onclick="calcular()">
+            <p id="resultado"></p>
+            <p id="diag"></p>
+                 
+        <script type="text/javascript">
+
+             function calcular(){
+             	let peso = document.querySelector("#peso");
+             	let altura = document.querySelector("#altura");
+             	let resultado = document.querySelector("#resultado");
+             	let diag = document.querySelector("#diag");
+
+             	if(peso.value.lenght == 0 || altura.value.lenght == 0){
+             		alert("Preencha todos os campos");
+             	} else{
+             		peso = Number(peso.value);
+             		altura = Number(altura.value);
+
+             		let imc = peso / (Math.pow(altura, 2));
+             		resultado.innerHTML = `Seu IMC é de: ${Math.round(imc)}`
+
+             		if(imc < 18.5){
+             			diag.innerHTML = "Magreza";
+             		} else if(imc <= 24.9){
+             			diag.innerHTML = "Peso normal";
+             		} else if(imc <= 29.9) {
+             			diag.innerHTML = "Obesidade I";
+             		} else if(imc <= 39.9){
+             			diag.innerHTML = "Obesidade II";
+             		} else{
+             			diag.innerHTML = "Obesidade Mórbida";
+             		}
+
+
+             	}
+             }
+
+            </script>
+    </body>
+</html>
